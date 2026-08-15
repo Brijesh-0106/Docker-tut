@@ -1,0 +1,41 @@
+{
+  "elements": [
+    {
+      "id": "el_eervz3ly",
+      "type": "text",
+      "x": 632.8843994140625,
+      "y": 74.00000762939453,
+      "width": 196.90191650390625,
+      "height": 45.19999694824219,
+      "text": "DevOps",
+      "fontSize": 52.858189146677155,
+      "fontFamily": "handwritten",
+      "strokeColor": "#e03131",
+      "fillColor": "transparent",
+      "strokeWidth": 2,
+      "seed": 1637810202
+    },
+    {
+      "id": "el_zh9y3sww",
+      "type": "text",
+      "x": 417.6000061035156,
+      "y": 193.60000610351562,
+      "width": 627.470703125,
+      "height": 50,
+      "text": "DevOps is basically after development how can you frequently\nand reliably you can deliver feature/updates",
+      "fontSize": 20,
+      "fontFamily": "handwritten",
+      "strokeColor": "#ffffff",
+      "fillColor": "transparent",
+      "strokeWidth": 2,
+      "seed": 88243761
+    }
+  ],
+  "appState": {
+    "camera": {
+      "x": 20,
+      "y": -1,
+      "zoom": 1
+    }
+  }
+}
