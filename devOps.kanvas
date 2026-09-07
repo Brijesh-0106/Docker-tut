@@ -274,11 +274,14 @@
       "text": "=> docker stop gracefully shutdown container where docker kill, stops container.\nStop gives grace period for cleanup",
       "fontSize": 20,
       "fontFamily": "handwritten",
-      "strokeColor": "#1971c2",
+      "strokeColor": "#ffffff",
       "fillColor": "transparent",
       "strokeWidth": 2,
       "seed": 472270679,
-      "editing": false
+      "editing": false,
+      "strokeStyle": "solid",
+      "fillStyle": "hachure",
+      "roughness": 1.5
     },
     {
       "id": "el_dq12qyr0",
@@ -505,8 +508,8 @@
       "type": "code",
       "x": 470,
       "y": 3111,
-      "width": 655,
-      "height": 1085,
+      "width": 657,
+      "height": 1128,
       "code": "services:\n  backend:\n    # 1. Image or Build\n    image: node:20-alpine          # use existing image\n    # OR\n    build:\n      context: .                   # where Dockerfile is\n      dockerfile: Dockerfile       # which Dockerfile to use\n      target: production           # which stage in multi-stage\n\n    # 2. Container name\n    container_name: my-backend     # custom name (optional)\n\n    # 3. Ports\n    ports:\n      - \"3000:3000\"                # host:container\n      \n      # 4. Environment variables\n    environment:\n      - NODE_ENV=production\n      - PORT=3000\n    # OR use .env file\n    env_file:\n      - .env\n\n    # 5. Volumes\n    volumes:\n      - ./src:/app/src             # bind mount\n      - pgdata:/app/data           # named volume\n\n    # 6. Networks\n    networks:\n      - public\n      - private\n      \n      # 7. Dependencies\n    depends_on:\n      db:\n        condition: service_healthy  # wait for db to be healthy\n\n    # 8. Restart policy\n    restart: unless-stopped\n\n    # 9. Healthcheck\n    healthcheck:\n      test: [\"CMD\", \"curl\", \"-f\", \"http://localhost:3000/health\"]\n      interval: 30s\n      timeout: 10s\n      retries: 3",
       "language": "bash",
       "codeTheme": "dark",
@@ -564,8 +567,8 @@
   ],
   "appState": {
     "camera": {
-      "x": -295.45453973406245,
-      "y": -1909.5922556342957,
+      "x": -275.45453973406245,
+      "y": -920.5922556342957,
       "zoom": 0.9865472164965027
     }
   }
