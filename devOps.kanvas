@@ -537,8 +537,8 @@
     {
       "id": "el_ry4p0fsj",
       "type": "text",
-      "x": 473.8288567617884,
-      "y": 4242.870670100907,
+      "x": 471,
+      "y": 4254.978731724042,
       "width": 286.09375,
       "height": 25,
       "text": "Docker compose commands:",
@@ -563,13 +563,47 @@
       "fillStyle": "hachure",
       "roughness": 1.5,
       "seed": 1462497807
+    },
+    {
+      "id": "el_y775u768",
+      "type": "code",
+      "x": 472,
+      "y": 4609,
+      "width": 633,
+      "height": 1315,
+      "code": "name: CI/CD Tutorial\n\non:\n  push:\n    branches: [main]\n\njobs:\n  test:\n    runs-on: ubuntu-latest\n\n    steps:\n      - name: Clone code\n        uses: actions/checkout@v3\n      - name: Node SetUp\n        uses: actions/setup-node@v3\n        with:\n          node_version: \"20\"\n          cache: \"npm\"\n      - name: Install Dependency\n        run: npm ci\n      - name: Run Lint\n        run: npm run lint\n        \n    build:\n    runs-on: ubuntu-latest\n    needs: test\n\n    steps:\n      - name: Clone code\n        uses: actions/checkout@v3\n      - name: Docker login\n        uses: docker/login-action@v2\n        with:\n          username: ${{secrets.DOCKER_USERNAME}}\n          password: ${{secrets.DOCKER_PASSWORD}}\n      - name: Docker push\n        run: |\n          docker build -t brijesh408/ci_cd_tut:${{github.run_number}} .\n          docker push brijesh408/ci_cd_tut:${{github.run_number}}\n  deploy:\n    runs-on: ubuntu-latest\n    needs: build\n\n    steps:\n      - name: SSH & Deploy\n        uses: appleboy/ssh-action@v0.1.5\n        with:\n          host: ${{secrets.SERVER_HOST}}\n          username: ${{secrets.SERVER_USER}}\n          key: ${{secrets.SERVER_SSH_KEY}}\n          script: |\n            sudo docker pull brijesh408/ci_cd_tut:${{github.run_number}} \n            sudo docker stop ci_cd_tut || true\n            sudo docker rm ci_cd_tut || true\n            sudo docker run -d -p 5173:5173 --restart unless-stopped\n --name ci_cd_tut brijesh408/ci_cd_tut:${{github.run_number}}\n\n            sleep 5\n\n            sudo docker ps",
+      "language": "bash",
+      "codeTheme": "dark",
+      "showLineNumbers": false,
+      "fontSize": 13,
+      "strokeColor": "#ffffff",
+      "seed": 143823141,
+      "editing": false
+    },
+    {
+      "id": "el_anyv3h39",
+      "type": "text",
+      "x": 493.5490149223383,
+      "y": 4583.9539762407285,
+      "width": 146.904296875,
+      "height": 25,
+      "text": "CI/CD pipeline",
+      "fontSize": 20,
+      "fontFamily": "handwritten",
+      "strokeColor": "#f08c00",
+      "fillColor": "transparent",
+      "strokeWidth": 2,
+      "seed": 1655204986,
+      "strokeStyle": "solid",
+      "fillStyle": "hachure",
+      "roughness": 1.5
     }
   ],
   "appState": {
     "camera": {
-      "x": -275.45453973406245,
-      "y": -920.5922556342957,
-      "zoom": 0.9865472164965027
+      "x": -45.67825812736257,
+      "y": -3758.029634399785,
+      "zoom": 0.8754515538681321
     }
   }
 }
